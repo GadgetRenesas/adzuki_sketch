@@ -449,7 +449,7 @@ void yield(void);
 #define noInterrupts() cli()
 
 #ifdef __RL78__
-#define F_CPU (32 * 1000 * 1000)
+#define F_CPU (32 * 1000 * 1000L)
 #endif
 
 #define lowByte(w) ((uint8_t) ((w) & 0xff))
@@ -542,8 +542,13 @@ extern const uint8_t PROGMEM digital_pin_to_timer_PGM[];
 #define digitalPinToBitMask(P) ( pgm_read_byte( digital_pin_to_bit_mask_PGM + (P) ) )
 #define digitalPinToTimer(P) ( pgm_read_byte( digital_pin_to_timer_PGM + (P) ) )
 #define analogInPinToBit(P) (P)
+#ifndef __RL78__
 #define portOutputRegister(P) ( (volatile uint8_t *)( pgm_read_word( port_to_output_PGM + (P))) )
 #define portInputRegister(P) ( (volatile uint8_t *)( pgm_read_word( port_to_input_PGM + (P))) )
+#else
+#define portOutputRegister(P) ( (volatile uint8_t *)( 0xFFF00 + (P)) )
+#define portInputRegister(P) ( (volatile uint8_t *)( 0xFFF00 + (P)) )
+#endif
 #define portModeRegister(P) ( (volatile uint8_t *)( pgm_read_word( port_to_mode_PGM + (P))) )
 
 #ifndef __RL78__

@@ -16,6 +16,8 @@ void servo_interrupt() __attribute__((weak));
 void servo_interrupt() {}
 void iica0_interrupt() __attribute__((weak));
 void iica0_interrupt() {}
+void rtc_interrupt() __attribute__((weak));
+void rtc_interrupt() {}
 void (*INT_TM_HOOK)() = NULL;
 
 //0x4

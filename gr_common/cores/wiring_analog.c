@@ -393,11 +393,12 @@ void analogWrite(uint8_t pin, int val) {
 					if (g_SwPwm[i].valid && g_SwPwm[i].pin == pin) {
 						g_SwPwm[i].newValue = val;
 					} else {
+						const PinTableType* p = getPinTable(pin);
 						g_SwPwm[i].valid = false;
 						g_SwPwm[i].pin = pin;
 						g_SwPwm[i].value = g_SwPwm[i].newValue = val;
-						g_SwPwm[i].port = getPinTable(pin)->portRegisterAddr;
-						g_SwPwm[i].mask = getPinTable(pin)->mask;
+						g_SwPwm[i].port = p->portRegisterAddr;
+						g_SwPwm[i].mask = p->mask;
 						g_SwPwm[i].valid = true;
 					}
 					if (!(TE0.te0 & 0x0040)) { // No pin uses Software PWM

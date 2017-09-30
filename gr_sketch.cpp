@@ -1,4 +1,4 @@
-/*GR-ADZUKI Sketch Template Version: V2.01*/
+/*GR-ADZUKI Sketch Template Version: V2.02*/
 #include <Arduino.h>
 #define LED_R_COM 22
 #define LED_G_COM 23

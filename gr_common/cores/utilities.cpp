@@ -1,7 +1,7 @@
 #include "wiring_private.h"
 #include "pins_arduino.h"
 #include "pintable.h"
-#include "interrupt_handlers.h"
+#include "rl78/interrupt_handlers.h"
 
 #define	ADS_TEMP_SENSOR			(0x80)
 #define	ADS_REF_VOLTAGE			(0x81)
