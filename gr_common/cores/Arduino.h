@@ -45,7 +45,7 @@
 #endif
 
 #ifdef __RL78__
-#define RLDUINO78_VERSION 0x0201
+#define RLDUINO78_VERSION 0x0202
 #define INTERRUPT
 #define _BV(bit) (1 << (bit))
 #define _HALT()		asm("halt;");
